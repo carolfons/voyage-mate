@@ -6,7 +6,7 @@ class ParticipantsRepository:
         self.__conn = conn #conn -> uma instancia de Connection
     
     def registry_participants(self, participant_infos: Dict) -> None:
-        cursor = self.conn.cursor()
+        cursor = self.__conn.cursor()
         cursor.execute(
             '''
             INSERT INTO participants
@@ -47,7 +47,7 @@ class ParticipantsRepository:
                 UPDATE participants
                     SET is_confirmed = 1
                 WHERE id = ?
-            '''
+            ''',(participant_id,)
         )
         self.__conn.commit()
 

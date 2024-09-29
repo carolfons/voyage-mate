@@ -7,7 +7,7 @@ class ActivitiesRepository:
         
 
     def registry_activity(self, activity_infos: Dict) -> None:
-        cursor = self.conn.cursor()
+        cursor = self.__conn.cursor()
         cursor.execute(
             '''
             INSERT INTO activities
@@ -36,3 +36,6 @@ class ActivitiesRepository:
         
         activities = cursor.fetchall()
         return activities
+    
+
+#fazer testes unitários
